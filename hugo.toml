@@ -1,0 +1,12 @@
+baseURL = "https://robertbaldyga.dev/"
+languageCode = "en-us"
+title = "robertbaldyga.dev"
+timeZone = "Europe/Warsaw"
+theme = "minimal"
+paginate = 10
+
+[params]
+  description = "Thoughts on software development, data centers, and AI."
+  author = "Robert Baldyga"
+  github = "https://github.com/robertbaldyga"
+  linkedin = "https://www.linkedin.com/in/robertbaldyga/"

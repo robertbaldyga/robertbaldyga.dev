@@ -1,0 +1,37 @@
+{{ $base := resources.Get "og-base.png" }}
+{{ $font := resources.Get "font.ttf" }}
+{{ $fontItalic := resources.Get "font-italic.ttf" }}
+
+{{ $titleFilter := images.Text .Title (dict
+  "color" "#1a1a1a"
+  "size"  52
+  "x"     72
+  "y"     200
+  "font"  $font
+) }}
+
+{{ $siteFilter := images.Text .Site.Title (dict
+  "color" "#2563eb"
+  "size"  22
+  "x"     72
+  "y"     540
+  "font"  $font
+) }}
+
+{{ $img := $base.Filter $titleFilter $siteFilter }}
+
+{{ with .Params.teaser }}
+{{ $quoted := printf "“%s”" . }}
+{{ $teaserFilter := images.Text $quoted (dict
+  "color" "#666666"
+  "size"  28
+  "x"     72
+  "y"     310
+  "font"  $fontItalic
+) }}
+{{ $img = $img.Filter $teaserFilter }}
+{{ end }}
+
+<meta property="og:image" content="{{ $img.Permalink }}">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">

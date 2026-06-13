@@ -1,0 +1,16 @@
+{{ define "main" }}
+<section class="post-list">
+  <h2>Recent posts</h2>
+  {{ range first 5 (where .Site.RegularPages "Section" "posts") }}
+  <article class="post-item">
+    <time>{{ .Date.Format "2006-01-02" }}</time>
+    <a href="{{ .Permalink }}">{{ .Title }}</a>
+  </article>
+  {{ else }}
+  <p>No posts yet.</p>
+  {{ end }}
+  {{ if gt (len (where .Site.RegularPages "Section" "posts")) 5 }}
+  <p><a href="/posts/">All posts →</a></p>
+  {{ end }}
+</section>
+{{ end }}
